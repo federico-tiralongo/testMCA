@@ -1,0 +1,29 @@
+.headerContainer{
+   
+    width: 100%;
+    min-height: 100px;
+    outline: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.headerContainer__icon{
+    margin-left: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: blue;
+}
+.headerContainer__breadChumbs{
+    min-width: 80px;
+ display: flex;
+justify-content: space-between;
+ 
+}
+.headerContainer__cart{
+    margin-right: 20px;
+    width: 40px;
+    height: 40px;
+  
+}

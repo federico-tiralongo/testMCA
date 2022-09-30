@@ -1,0 +1,13 @@
+.input{
+    /* background-color: red; */
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin: 40px;
+}
+
+.displayList{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    
+}

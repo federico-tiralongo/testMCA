@@ -1,0 +1,28 @@
+.detailsPage {
+    display: flex;
+    background-color: aqua;
+    height: 100vh;
+}
+.detailPage__text {
+    flex: 1;
+    background-color: antiquewhite;
+    height: 100vh;
+}
+.detailPage__text__description {
+    outline: 1px solid green;
+}
+
+.detailPage__image {
+    display: flex;
+    justify-content: center;
+    margin: auto ;
+    flex: 1;
+    background-color: red;
+}
+
+.detailPage__image img {
+    width: 100%;
+    min-width: 250px;
+    min-height: 250px;
+    max-width: 250px;
+}
