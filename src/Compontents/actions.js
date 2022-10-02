@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../Context/ProductContext'
 import "./actions.css"
+import carro from "../carts.png";
 
 const Actions = ({ colors, sims, id }) => {
 
@@ -66,7 +67,7 @@ const Actions = ({ colors, sims, id }) => {
 
 
     useEffect(() => {
-
+        console.log(sims, "sims");
     }, [])
 
 
@@ -99,7 +100,7 @@ const Actions = ({ colors, sims, id }) => {
                 </h3>
 
                 <div className='sim'>
-                    {sims && sims.map((sim, index) => {
+                    {sims && sims != undefined && ((sim, index) => {
                         return (
                             <>
                                 <div className='colors__colorContainer' onClick={()=>handleStorage(sim,index)}>
@@ -113,6 +114,10 @@ const Actions = ({ colors, sims, id }) => {
                 </div>
 
                 <div className='button' onClick={() => handleActions()}>
+                  <div className='cart_img'>
+                    <img src={carro} alt="carro compra"/>
+                  </div>  
+                    
                     <button>Añadir a la cesta</button>
                 </div>
             </div>

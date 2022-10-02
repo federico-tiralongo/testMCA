@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react'
 import { ProductContext } from '../Context/ProductContext'
 import { Link } from "react-router-dom"
 import "./header.css"
+import  Logo from "../smartphone.png" 
 import { createAdd } from 'typescript'
 
 
@@ -33,7 +34,7 @@ const Header = () => {
         <div className='headerContainer'>
             <Link to={"/"}>
                 <div className='headerContainer__icon'>
-
+                   <img src={Logo}/> 
                 </div>
             </Link>
 

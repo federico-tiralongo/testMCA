@@ -34,8 +34,10 @@ const SearchList = ({ filteredProducts }) => {
 
 
     return (
-        <div className="displayList">
-            {filtered}
+        <div className="listFlexContainer">
+            <div className="displayList">
+                {filtered}
+            </div>
         </div>
     )
 }

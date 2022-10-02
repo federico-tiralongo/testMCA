@@ -1,6 +1,5 @@
 .detailsPage {
     display: flex;
-    background-color: aqua;
     height: 100vh;
 }
 .detailPage__text {
@@ -17,7 +16,7 @@
     justify-content: center;
     margin: auto ;
     flex: 1;
-    background-color: red;
+  
 }
 
 .detailPage__image img {
@@ -25,4 +24,33 @@
     min-width: 250px;
     min-height: 250px;
     max-width: 250px;
+}
+@media (max-width:750px) {
+    .detailsPage {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+    .detailPage__text {
+        flex: 1;
+        background-color: antiquewhite;
+        height: 100vh;
+    }
+    .detailPage__text h2 {
+        text-align: center;
+    }
+    .detailPage__text ul {
+        text-align: center;
+        list-style-type: none;
+    }
+    .detailPage__text li {
+        margin-bottom: 10px;;
+    }
+    .detailPage__text__actions {
+        text-align: center;
+    }
+    .detailPage__text__description {
+        outline: none;
+    }
+    
 }
