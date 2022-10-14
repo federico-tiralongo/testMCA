@@ -52,6 +52,7 @@ const Actions = ({ id, options }) => {
         <div className="actions__container">
           <h3>Colores</h3>
           <div className="actions__options">
+            {/* {colorCode === "" && <span>Debes seleccionar una opcion</span>} */}
             {options.colors &&
               options.colors.map((color) => {
                 return (
@@ -59,6 +60,17 @@ const Actions = ({ id, options }) => {
                     className="actions__option"
                     key={color.code}
                     onClick={() => handleColor(color.code)}
+                    style={
+                      colorCode === color.code
+                        ? {
+                            color: "blue",
+                            backgroundColor: "white",
+                          }
+                        : {
+                            color: "white",
+                            backgroundColor: "blue",
+                          }
+                    }
                   >
                     {color.name}
                   </div>
@@ -67,6 +79,7 @@ const Actions = ({ id, options }) => {
           </div>
           <h3>Almacenamiento</h3>
           <div className="actions__options">
+          {/* {storageCode === "" && <span>Debes seleccionar una opcion</span>} */}
             {options.storages &&
               options.storages.map((storage) => {
                 return (
@@ -74,6 +87,17 @@ const Actions = ({ id, options }) => {
                     className="actions__option"
                     key={storage.code}
                     onClick={() => handleStorage(storage.code)}
+                    style={
+                      storageCode === storage.code
+                        ? {
+                            color: "blue",
+                            backgroundColor: "white",
+                          }
+                        : {
+                            color: "white",
+                            backgroundColor: "blue",
+                          }
+                    }
                   >
                     {storage.name}
                   </div>

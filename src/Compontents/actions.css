@@ -9,7 +9,8 @@
 }
 
 .actions__option {
-  border: 1px solid white;
+  border-radius: 8px;
+  border: 1px solid blue;
   background-color: blue;
   padding: 20px 20px;
   display: flex;
@@ -18,13 +19,15 @@
   justify-content: center;
   color: white;
   cursor: pointer;
-margin-bottom: 40px;
+  margin-bottom: 40px;
+}
+.actions__option span {
+  color: red;
 }
 
 .button__container {
   display: flex;
   align-items: center;
-  
 }
 
 .button__container button {

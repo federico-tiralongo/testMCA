@@ -7,7 +7,7 @@ import "./search.css";
 const SearchList = ({ filteredProducts }) => {
   const { setSelectedProduct, selectedProduct } = useContext(ProductContext);
   const naviagate = useNavigate();
-  const root = "https://front-test-api.herokuapp.com/api/product/";
+
 
   function chooseProduct(e) {
     setSelectedProduct(e);
@@ -17,7 +17,7 @@ const SearchList = ({ filteredProducts }) => {
   }
 
   useEffect(() => {
-    console.log(selectedProduct);
+    
   }, [selectedProduct]);
 
   const filtered = filteredProducts.map((product, index) => {
