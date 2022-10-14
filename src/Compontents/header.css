@@ -1,41 +1,43 @@
-.headerContainer{
-    color: aliceblue;
-    width: 100%;
-    min-height: 100px;
-    background-color: #00aa80;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
+.headerContainer {
+  position: sticky;
+  top: 0px;
+  color: aliceblue;
+  width: 100%;
+  min-height: 100px;
+  background-color: #00aa80;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.headerContainer__icon{
-    margin-left: 20px;
-    width: 40px;
-    height: 40px;
-    object-fit:cover;
+.headerContainer__icon {
+  margin-left: 20px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
 }
-.headerContainer__breadChumbs{
-    min-width: 80px;
- display: flex;
-justify-content: space-between;
- 
+.headerContainer__breadChumbs {
+  min-width: 80px;
+  display: flex;
+  justify-content: space-between;
 }
-.headerContainer__cart{
-    margin-right: 20px;
-    width: 40px;
-    height: 40px;
-  
+.headerContainer__cart {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
 }
-.headerContainer a{
-    color: aliceblue;
+
+.headerContainer__cart h4{
+    margin-right: 5px;
+}
+.headerContainer a {
+  color: aliceblue;
 }
 
 .headerContainer__icon img {
-        max-width: inherit;
-        max-height: inherit;
-        height: inherit;
-        width: inherit;
-        object-fit: cover;
-      
+  max-width: inherit;
+  max-height: inherit;
+  height: inherit;
+  width: inherit;
+  object-fit: cover;
 }

@@ -17,23 +17,23 @@ const SearchList = ({ filteredProducts }) => {
   }
 
   useEffect(() => {
-
     console.log(selectedProduct);
   }, [selectedProduct]);
 
-  const filtered = filteredProducts.map((product) => {
+  const filtered = filteredProducts.map((product, index) => {
     return (
       <>
         <div
           onClick={() => {
             chooseProduct(product);
           }}
+          key={index}
         >
           <Item
             imgUrl={product.imgUrl}
             brand={product.brand}
             model={product.model}
-            price={product.price}
+            price={product.price }
           />
         </div>
       </>

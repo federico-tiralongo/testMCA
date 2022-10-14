@@ -15,17 +15,7 @@ const ProductsProvider = ({ children }) => {
 
   const endpoints = {
     getAll: "api/product",
-    post: "api/cart",
   };
-
-  //   function chooseProduct(e) {
-  //     console.log(selectedProduct);
-
-  //     setSelectedProduct(e);
-
-  //     console.log(selectedProduct);
-
-  //   }
 
   function addCart(product) {
     let newArr = [...cart];
@@ -40,8 +30,7 @@ const ProductsProvider = ({ children }) => {
         setProducts(data);
         localStorage.setItem("allProducts", JSON.stringify(data));
       });
-    console.log(newProduct, "newProduct");
-    console.log(cart, "cart");
+    
   }, [newProduct, cart]);
 
   return (

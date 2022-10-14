@@ -2,8 +2,8 @@
     cursor: pointer;
     /* border:1px solid black; */
     width: 100%;
+    min-width: 200px;
     max-width: 200px;
-    min-height: 200px;
     margin:20px 
 }
 

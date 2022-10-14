@@ -4,8 +4,8 @@
 }
 .detailPage__text {
     flex: 1;
-    background-color: antiquewhite;
-    height: 100vh;
+    /* background-color: antiquewhite; */
+    /* height: 100vh; */
 }
 .detailPage__text__description {
     outline: 1px solid green;
@@ -34,7 +34,7 @@
     .detailPage__text {
         flex: 1;
         background-color: antiquewhite;
-        height: 100vh;
+        /* height: 100vh; */
     }
     .detailPage__text h2 {
         text-align: center;

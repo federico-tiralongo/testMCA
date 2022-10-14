@@ -1,129 +1,95 @@
-import { useContext, useEffect, useState } from 'react'
-import { ProductContext } from '../Context/ProductContext'
-import "./actions.css"
-import carro from "../carts.png";
+import { useContext, useEffect, useState } from "react";
+import { ProductContext } from "../Context/ProductContext";
+import "./actions.css";
+import { BsFillCartFill } from "react-icons/bs";
 
-const Actions = ({ colors, sims, id }) => {
+const Actions = ({ id, options }) => {
+  const { newProduct, setNewProduct, addCart } = useContext(ProductContext);
+  const [colorCode, setColorCode] = useState("");
+  const [storageCode, setStorageCode] = useState("");
 
+  function handleColor(e) {
+    setColorCode(e);
+  }
 
-    const { newProduct, setNewProduct, addCart } = useContext(ProductContext)
-    // console.log(sims, "sims");
-    // console.log(colors, "colors");
+  function handleStorage(e) {
+    setStorageCode(e);
+  }
 
-    const [colorCode, setColorCode] = useState("")
-    const [storageCode, setStorageCode] = useState("")
+  async function handleActions() {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newProduct),
+    };
 
+    fetch("https://front-test-api.herokuapp.com/api/cart", requestOptions).then(
+      async (response) => {
+        const data = await response.json();
+        if (!response.ok) {
+          const error = (data && data.message) || response.status;
+          return console.log(error);
+        }
+        addCart(data);
+      }
+    );
+  }
 
+  useEffect(() => {
+    setNewProduct({
+      ...newProduct,
+      id: id,
+      colorCode: colorCode,
+      storageCode: storageCode,
+    });
+  }, [colorCode, storageCode]);
 
-    function handleColor(e) {
-        setColorCode(e)
-    }
+  return (
+    <>
+      <div>
+        <h2>Acciones del producto</h2>
 
-    function handleStorage(e) {
-        setStorageCode(e)
-    }
+        <div className="actions__container">
+          <h3>Colores</h3>
+          <div className="actions__options">
+            {options.colors &&
+              options.colors.map((color) => {
+                return (
+                  <div
+                    className="actions__option"
+                    key={color.code}
+                    onClick={() => handleColor(color.code)}
+                  >
+                    {color.name}
+                  </div>
+                );
+              })}
+          </div>
+          <h3>Almacenamiento</h3>
+          <div className="actions__options">
+            {options.storages &&
+              options.storages.map((storage) => {
+                return (
+                  <div
+                    className="actions__option"
+                    key={storage.code}
+                    onClick={() => handleStorage(storage.code)}
+                  >
+                    {storage.name}
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+        <div className="button__container">
+          <button onClick={() => handleActions()}>Agregar al Carrito</button>
+          <div>
+            <BsFillCartFill />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-    function handleActions() {
-
-        setNewProduct({
-
-            ...newProduct,
-            id: id,
-            colorCode: colorCode,
-            storageCode: storageCode
-
-
-        })
-        setTimeout(() => {
-        addCart(newProduct)
-    
-
-
-        
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newProduct)
-                
-            };
-
-            console.log(requestOptions.body);
-            fetch('https://front-test-api.herokuapp.com/api/cart', requestOptions)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)                   
-                });
-        }, 1000);
-
-
-
-
-
-
-    }
-
-
-
-
-
-    useEffect(() => {
-        console.log(sims, "sims");
-    }, [])
-
-
-    return (
-
-
-        <>
-
-            <h2>Acciones del producto</h2>
-            <div>
-                <h3>Color</h3>
-
-                <div className='colors' >
-                    {
-                        colors && colors.map((color, index) => {
-                            return (
-                                <>
-                                    <div className='colors__colorContainer' onClick={() => handleColor(color, index)}>
-                                        <h5>
-                                            {color}
-                                        </h5>
-                                    </div>
-                                </>
-                            )
-                        })
-                    }
-                </div>
-                <h3>
-                    Almacenamiento
-                </h3>
-
-                <div className='sim'>
-                    {sims && sims != undefined && ((sim, index) => {
-                        return (
-                            <>
-                                <div className='colors__colorContainer' onClick={()=>handleStorage(sim,index)}>
-                                    <h5>
-                                        {sim}
-                                    </h5>
-                                </div>
-                            </>
-                        )
-                    })}
-                </div>
-
-                <div className='button' onClick={() => handleActions()}>
-                  <div className='cart_img'>
-                    <img src={carro} alt="carro compra"/>
-                  </div>  
-                    
-                    <button>Añadir a la cesta</button>
-                </div>
-            </div>
-
-        </>
-    )
-}
-
-export default Actions
+export default Actions;
