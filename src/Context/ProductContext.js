@@ -29,8 +29,10 @@ const ProductsProvider = ({ children }) => {
       .then((data) => {
         setProducts(data);
         localStorage.setItem("allProducts", JSON.stringify(data));
+        
       });
-    
+     
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newProduct, cart]);
 
   return (

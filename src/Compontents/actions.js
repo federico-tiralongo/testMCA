@@ -7,6 +7,7 @@ const Actions = ({ id, options }) => {
   const { newProduct, setNewProduct, addCart } = useContext(ProductContext);
   const [colorCode, setColorCode] = useState("");
   const [storageCode, setStorageCode] = useState("");
+  const [errorVisible,setErrorVisible] = useState("notVisible")
 
   function handleColor(e) {
     setColorCode(e);
@@ -28,13 +29,14 @@ const Actions = ({ id, options }) => {
         const data = await response.json();
         if (!response.ok) {
           const error = (data && data.message) || response.status;
+          setErrorVisible("visible")
           return console.log(error);
         }
         addCart(data);
       }
     );
   }
-
+  
   useEffect(() => {
     setNewProduct({
       ...newProduct,
@@ -42,6 +44,7 @@ const Actions = ({ id, options }) => {
       colorCode: colorCode,
       storageCode: storageCode,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorCode, storageCode]);
 
   return (
@@ -106,10 +109,13 @@ const Actions = ({ id, options }) => {
           </div>
         </div>
         <div className="button__container">
-          <button onClick={() => handleActions()}>Agregar al Carrito</button>
+          <button className="botonCarro" onClick={() => handleActions()}>Agregar al Carrito</button>
           <div>
             <BsFillCartFill />
           </div>
+        </div>
+        <div className={errorVisible}>
+          Debes seleccionar Color y Almacenamiento para agregar al carrito
         </div>
       </div>
     </>

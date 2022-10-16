@@ -3,6 +3,7 @@ import { ProductContext } from "../Context/ProductContext";
 import { Link } from "react-router-dom";
 import Header from "../Compontents/header";
 import Actions from "../Compontents/actions";
+import { SpinnerCircular } from 'spinners-react';
 import "./details.css";
 
 const Details = () => {
@@ -10,6 +11,7 @@ const Details = () => {
   const root = "https://front-test-api.herokuapp.com/api/product/";
 
   const [dataSelectedProdcut, setDataSelectedProdcut] = useState({});
+  const [fetchNotResolved, setfetchNotResolved] = useState(true)
 
   useEffect(() => {
     if (selectedProduct !== {}) {
@@ -17,21 +19,29 @@ const Details = () => {
         .then((res) => res.json())
         .then((data) => {
           console.log("data", data);
-          setDataSelectedProdcut(data);
+            setfetchNotResolved(false)
+            setDataSelectedProdcut(data);
+        
           console.log("dataSelectedProduct", dataSelectedProdcut);
         });
     } else {
       console.log("tienes un error");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <Header />
-      {dataSelectedProdcut.id ? (
+      {fetchNotResolved ? 
+        <div className="Spinner">
+          <SpinnerCircular size="100px"/>
+        </div>
+      :
+      dataSelectedProdcut.id ? (
         <div className="detailsPage">
           <div className="detailPage__image">
-            <img src={dataSelectedProdcut.imgUrl} />
+            <img src={dataSelectedProdcut.imgUrl} alt="imagen producto" />
           </div>
           <div className="detailPage__text">
             <div className="detailPage__text__description">
@@ -46,7 +56,7 @@ const Details = () => {
                 <li>{dataSelectedProdcut.displayResolution}</li>
                 <li>{dataSelectedProdcut.battery}</li>
                 <li>
-                  {typeof dataSelectedProdcut.primaryCamera === "array"
+                  {typeof dataSelectedProdcut.primaryCamera === typeof []
                     ? dataSelectedProdcut.primaryCamera.map((e) => {
                         return <>{` ${e} `}</>;
                       })
@@ -69,10 +79,10 @@ const Details = () => {
       ) : (
         <div className="noProductSelected">
           <h1>
-            Selecciona algún Producto en ela lista de la
+            Selecciona algún Producto en la lista de la
             <br></br>
             <Link to={"/"}>
-              <a>LISTA</a>
+              <div>LISTA</div>
             </Link>
           </h1>
         </div>

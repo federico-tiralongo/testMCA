@@ -1,6 +1,6 @@
-.actions__container {
+.botonCarro{
+  cursor:pointer;
 }
-
 .actions__options {
   display: flex;
   flex-wrap: nowrap;
@@ -36,4 +36,14 @@
   color: grey;
   padding: 10px 10px;
   color: black;
+}
+
+.visible{
+  color:red;
+  display: inline;
+}
+
+.notVisible {
+  color:red;
+  display: none;
 }

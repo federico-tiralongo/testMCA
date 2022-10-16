@@ -25,7 +25,7 @@ const Header = () => {
     <div className="headerContainer">
       <Link to={"/"}>
         <div className="headerContainer__icon">
-          <img src={Logo} />
+          <img src={Logo} alt="Logo"/>
         </div>
       </Link>
 

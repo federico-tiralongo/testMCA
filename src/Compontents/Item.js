@@ -1,12 +1,10 @@
-import { useState, useEffect, useContext } from "react";
-import { ProductContext } from "../Context/ProductContext";
 import "./Item.css";
 
 const Item = ({ imgUrl, brand, price, model }) => {
   return (
     <div className="itemContainer">
       <div className="itemContainer__image">
-        <img src={imgUrl} />
+        <img src={imgUrl} alt="imagenMobil"/>
       </div>
       <div className="itemContainer__text">
         <h3>{brand}</h3>
