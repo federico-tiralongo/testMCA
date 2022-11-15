@@ -11,7 +11,9 @@ const Search = ({ products }) => {
     setSearching(e.target.value);
   }
   const filteredProducts = products.filter((product) => {
-    return product.model.toLowerCase().includes(searching.toLocaleLowerCase());
+    let searchResult = product.brand.toLowerCase().includes(searching.toLocaleLowerCase());
+    if(!searchResult) searchResult =  product.model.toLowerCase().includes(searching.toLocaleLowerCase());
+    return searchResult;
   });
 
   return (

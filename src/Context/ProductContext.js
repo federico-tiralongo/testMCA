@@ -1,17 +1,20 @@
 import { useEffect, createContext, useState } from "react";
+import { useLocalStorage } from "../customHooks/useLocalStorage";
 
 export const ProductContext = createContext();
 
 const ProductsProvider = ({ children }) => {
+  const [localCart, setLocalCart] = useLocalStorage('cart',[]);
   const root = "https://front-test-api.herokuapp.com/";
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState({});
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(localCart);
   const [newProduct, setNewProduct] = useState({
     id: "",
     colorCode: "",
     storageCode: "",
   });
+  
 
   const endpoints = {
     getAll: "api/product",
@@ -21,6 +24,7 @@ const ProductsProvider = ({ children }) => {
     let newArr = [...cart];
     newArr.push(product);
     setCart(newArr);
+    setLocalCart(newArr);
   }
 
   useEffect(() => {
